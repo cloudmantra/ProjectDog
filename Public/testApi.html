@@ -1,0 +1,144 @@
+<!doctype html>
+<head>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<h1>API GET Data</h1>
+  <textarea class="form-control" rows="3" id="apiParams"></textarea>
+  <input type="text" class="form-control" placeholder="api url" id="apiUrl" style="margin: 20px auto;"> 
+  <button type="button" class="btn btn-primary" id="curlData">Curl Data</button>
+  <div id="result"></div>
+<h1>API POST Data</h1>
+  <textarea class="form-control" rows="3" id="apiParams1"></textarea>
+  <input type="text" class="form-control" placeholder="api url" id="apiUrl1" style="margin: 20px auto;"> 
+  <button type="button" class="btn btn-primary" id="postData">Curl Data</button>
+  <div id="result1"></div>
+<h1>API PUT Data</h1>
+  <textarea class="form-control" rows="3" id="apiParams2"></textarea>
+  <input type="text" class="form-control" placeholder="api url" id="apiUrl2" style="margin: 20px auto;"> 
+  <button type="button" class="btn btn-primary" id="putData">Curl Data</button>
+  <div id="result2"></div>
+<h1>API DELETE Data</h1>
+  <textarea class="form-control" rows="3" id="apiParams3"></textarea>
+  <input type="text" class="form-control" placeholder="api url" id="apiUrl3" style="margin: 20px auto;"> 
+  <button type="button" class="btn btn-primary" id="deleteData">Curl Data</button>
+  <div id="result3"></div>
+
+<script>
+$(document).ready(function(){
+
+$("#curlData").click(function(event) {
+
+   var url       = $("#apiUrl").val();
+   var strParams = $("#apiParams").val();
+   var data      = JSON.parse(strParams);
+   console.log(data);
+   
+   
+   $.ajax({
+ 	 type: "GET",
+ 	 url:  url,
+ 	 contentType: 'application/json',
+ 	 data:JSON.parse(strParams),
+ 	 success: function(data) {
+ 		if (data === null || data.length == 0) {
+ 		   alert("No data found.");
+ 		} else {
+ 		   $( "#result" ).html(JSON.stringify(data));
+ 	    }
+ 	 },
+ 	 error: function(err) {
+ 		console.log(err);
+ 		alert(JSON.parse(err.responseText).message);
+ 	 },
+ 	 dataType: 'json'
+    });
+  });
+$("#postData").click(function(event) {
+
+   var url       = $("#apiUrl1").val();
+   var strParams = $("#apiParams1").val();
+   var data      = JSON.parse(strParams);
+   console.log(JSON.stringify(data));
+   
+   $.ajax({
+ 	 type: "POST",
+ 	 url:  url,
+ 	 contentType: 'application/json',
+	 data: JSON.stringify(data),
+ 	 success: function(data) {
+ 		if (data === null || data.length == 0) {
+ 		   alert("No data found.");
+ 		} else {
+ 		   $( "#result1" ).html(JSON.stringify(data));
+ 	    }
+ 	 },
+ 	 error: function(err) {
+ 		console.log(err);
+ 		alert(JSON.parse(err.responseText).message);
+ 	 },
+ 	 dataType: 'json'
+    });
+  });
+
+$("#putData").click(function(event) {
+
+   var url       = $("#apiUrl2").val();
+   var strParams = $("#apiParams2").val();
+   var data      = JSON.parse(strParams);
+   console.log(data);
+   
+   $.ajax({
+ 	 type: "PUT",
+ 	 url:  url,
+	 contentType: 'application/json',
+ 	 data:JSON.stringify(data),
+ 	 success: function(data) {
+ 		if (data === null || data.length == 0) {
+ 		   alert("No data found.");
+ 		} else {
+ 		   $( "#result2" ).html(JSON.stringify(data));
+ 	    }
+ 	 },
+ 	 error: function(err) {
+ 		console.log(err);
+ 		alert(JSON.parse(err.responseText).message);
+ 	 },
+ 	 dataType: 'json'
+    });
+  });
+
+});
+$("#deleteData").click(function(event) {
+
+   var url       = $("#apiUrl3").val();
+   var strParams = $("#apiParams3").val();
+   var data      = JSON.parse(strParams);
+   console.log(data);
+   
+   $.ajax({
+ 	 type: "DELETE",
+ 	 url:  url,
+ 	 contentType: 'application/json',
+ 	 data:JSON.stringify(data),
+ 	 success: function(data) {
+ 		if (data === null || data.length == 0) {
+ 		   alert("No data found.");
+ 		} else {
+ 		   $( "#result3" ).html(JSON.stringify(data));
+ 	    }
+ 	 },
+ 	 error: function(err) {
+ 		console.log(err);
+ 		alert(JSON.parse(err.responseText).message);
+ 	 },
+ 	 dataType: 'json'
+    });
+  });
+</script>
+</body>
+ 
+</html>

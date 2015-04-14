@@ -1,0 +1,10 @@
+{
+    "development": {
+        "MONGO_URI": "mongodb://localhost:27017/test1",
+	"PORT_NO":"8080"
+    },
+    "production": {
+        "MONGO_URI": "mongodb://localhost:27017/test1",
+	"PORT_NO":"8080"
+    }
+}

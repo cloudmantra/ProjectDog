@@ -1,0 +1,41 @@
+<% _.each(data,function(Item,index){console.log(index);%>
+<hr>
+<div class="otherIDInfoContainer">
+   <div class="profileInfoBlockHeader">
+      <div class="heading">Other ID's</div>
+   </div>
+   <div class="govIdInfoBlock">
+         <label>ID Name :</label>
+         <input id="otherIdName" type="text" value="<%= Item.idName%>">               
+   </div>
+   <% 
+      var tempDate = new Date(Item.issueDate);
+      var issueDate = tempDate.toISOString().substring(0, 10);
+      var tempDate = new Date(Item.expiryDate);
+      var expiryDate = tempDate.toISOString().substring(0, 10);
+   %>
+   <div class="govIdInfoBlock date">
+      <label> Date of Issue:</label>
+      <input type="date" id="otherIdDateOfIssue" value="<%= issueDate %>">                  
+   </div>
+   <div class="govIdInfoBlock date">
+      <label> Expiry Date:</label>
+      <input type="date" id="otherIdExpiryDate" value="<%= expiryDate %>">                  
+   </div>
+   <div class="govIdInfoBlock">
+         <label>ID # :</label>
+         <input id="otherIdNumber" type="text" value="<%= Item.idNumber%>">               
+   </div>
+   <div class="govIdInfoBlock select">
+      <label>Country of Issue:</label>
+      <select id='otherIdIssueCountry<%=index%>'>
+         <option value="india">India</option>
+         <option value="nepal">Nepal</option>
+      </select>                  
+   </div>
+   <div class="govIdInfoBlock">
+         <label>City of Issue:</label>
+         <input id="otherIdIssueCity" type="text" value="<%= Item.issueCity%>">               
+   </div>
+</div>
+<%})%>

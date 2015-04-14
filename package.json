@@ -1,0 +1,17 @@
+{
+  "name": "VouchApp",
+  "version": "0.0.1",
+  "description": "A Node.js App using express",
+  "private": true,
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "body-parser": "~1.0.1",
+    "nodemailer": "~0.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com"
+  },
+  "engine": "node >=0.6.x"
+}

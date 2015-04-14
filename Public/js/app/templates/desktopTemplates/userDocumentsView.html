@@ -1,0 +1,68 @@
+<section class="section entry-post userDoc" style="padding-bottom: 0">
+   <div class="container">
+    <div class="row">
+    	<div class="userDocumentHeader">
+    		<div type="button" class="btn btn-primary AddNewDocument">
+    			<span class="docBtnText">Add</span><span class="addPlusIcon">&#8853;</span>
+    		</div>
+    		<div type="button" class="btn btn-primary EditDocument">
+    			<span class="docBtnText">Edit</span><span class="addEditIcon">&#9998;</span>
+    		</div>
+    		<div type="button" class="btn btn-primary DeleteDocument">
+    			<span class="docBtnText">Delete</span><span class="addDeleteIcon">&#8854;</span>
+    		</div>
+    		<div class="AddDocumentForm  docForm">
+    			<span id="closeDocForm" class="btn btn-primary closeAddDocForm">Close &#8855;</span>
+    			<div class="AddDocumentFormBlock">
+                     <label>Document Name:</label>
+                     <input type="text" id="documentName" value="">
+                </div>
+    			<div class="AddDocumentFormBlock">
+                     <label>Issuing Authority:</label>
+                     <input type="text" id="issueAuthority" value="">
+                </div>
+    			<div class="AddDocumentFormBlock">
+                     <label>Year of Issue:</label>
+                     <input type="text" id="issueYear" value="">
+                </div>
+    			<div class="AddDocumentFormBlock">
+		    		<input type="file" id="fileToUpload" value="">
+                	<div type="button" class="btn btn-primary UploadDocument">
+		    			<span class="docBtnText">Upload</span>
+		    			<span class="addUploadIcon">&#10162;</span>
+		    		</div>     
+                </div>
+    		</div>
+    		<div class="EditDocumentForm docForm">
+    			<span id="closeDocForm" class="btn btn-primary closeEditDocForm">Close &#8855;</span>
+    			<div class="EditDocumentFormBlock">
+                     <label>Document Name:</label>
+                     <input type="text" id="editDocumentName" value="">
+                </div>
+    			<div class="EditDocumentFormBlock">
+                     <label>Issuing Authority:</label>
+                     <input type="text" id="editIssueAuthority" value="">
+                </div>
+    			<div class="EditDocumentFormBlock">
+                     <label>Year of Issue:</label>
+                     <input type="text" id="editIssueYear" value="">
+                </div>
+                <div class="EditDocumentFormBlock">
+                	<div type="button" class="btn btn-primary SaveDocumentChanges">Save</div>     
+                </div>
+    		</div>
+    	</div>
+    	<div class="userDocumentContainer">
+    		<ul class="userDocumentList">
+    			<li class="docListHeader">
+    				<div class="selectBox"><input type="checkbox" class="selectAll"></div>
+    				<div class="docName">Document Name</div>
+    				<div class="docIssueAuthority">Issuing Authority</div>
+    				<div class="docIssueYear">Year of Issue</div>
+    				<div class="docUploaded">Upload Document</div>
+    			</li>
+    		</ul>
+    	</div>
+   </div>
+</div>
+</section>

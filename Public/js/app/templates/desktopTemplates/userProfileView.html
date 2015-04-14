@@ -1,0 +1,341 @@
+<section class="section entry-post" style="padding-bottom: 0">
+   <div class="container">
+    <div class="row">
+      <div class="InformationBlock">
+            <div class="InformationBlockTitle">Personal Information</div>
+            <div class="basicDetailContainer">
+               <div class="profileInfoBlock select">
+                  <label>Salutaion:</label>
+                  <select id="salutaion">
+                        <option value="miss">Miss.</option>
+                        <option value="mrs">Mrs.</option>
+                        <option value="mr">Mr.</option>
+                  </select>
+               </div>
+               <div class="profileInfoBlock select">
+                  <label>Gender:</label>
+                  <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                  </select>
+               </div>
+               
+               <div class="profileInfoBlock date">
+                  <label> Date of Birth:</label>
+                  <% 
+                     var tempDate = new Date(data.personalInfo.dateOfBirth);
+                     var birthDate = tempDate.toISOString().substring(0, 10);
+                     console.log(birthDate);
+                  %>
+                  <input type="date" id="dateofBirth" value="<%= birthDate%>">
+               </div>
+
+               <div class="profileInfoBlock select">
+                  <label>Marital Status:</label>
+                  <select id="maritalStatus">
+                     <option value="married">Married</option>
+                     <option value="unmarried">Unmarried</option>
+                  </select>
+               </div>
+               <div class="profileInfoBlockNameChange">
+                  <input type="checkbox" id="nameChange">
+                  <label>My name has Changed.</label>
+               </div>
+               </div>
+               <div class="personalDetailContainer">
+                  <div class="profileInfoBlock">
+                     <label>First Name:</label>
+                     <input type="text" id="firstName" value="<%= data.personalInfo.firstName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Middle Name:</label>
+                     <input type="text" id="middleName" value="<%= data.personalInfo.middleName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Last Name:</label>
+                     <input type="text" id="lastName" value="<%= data.personalInfo.lastName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Before Marriage:</label>
+                     <input type="text" id="beforeMarriageName" value="<%= data.personalInfo.beforeMarriage%>">
+                  </div>
+               </div>
+               <hr>
+               <div class="fatherDetailContainer">
+                  <div class="profileInfoBlockHeader">
+                     <div class="heading">Fathers Name</div>
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>First Name:</label>
+                     <input type="text" id="fatherFirstName" value="<%= data.personalInfo.fatherFirstName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Middle Name:</label>
+                     <input type="text" id="fatherMiddleName" value="<%= data.personalInfo.fatherMiddleName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Last Name:</label>
+                     <input type="text" id="fatherLastName" value="<%= data.personalInfo.fatherLastName%>">
+                  </div>
+               </div>
+               <hr>
+               <div class="motherDetailContainer">   
+                  <div class="profileInfoBlockHeader">
+                     <div class="heading">Mothers Name</div>
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>First Name:</label>
+                     <input type="text" id="motherFirstName" value="<%= data.personalInfo.motherFirstName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Middle Name:</label>
+                     <input type="text" id="motherMiddleName" value="<%= data.personalInfo.motherMiddleName%>">
+                  </div>
+
+                  <div class="profileInfoBlock">
+                     <label>Last Name:</label>
+                     <input type="text" id="motherLastName" value="<%= data.personalInfo.motherLastName%>">
+                  </div>
+               </div>
+      </div>
+      <div class="InformationBlock">
+            <div class="InformationBlockTitle">Address Information</div>
+            <div class="tempAddressContainer">
+               <div class="profileInfoBlockHeader">
+                  <div class="heading">Temporary Address</div>
+               </div>
+               <div class="addressInfoBlock">
+                  <label>Address Line 1:</label>
+                  <input id="tempAddressLine1" type="text" value="<%= data.addressInfo.temporaryAddress.addressLine1%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>Address Line 2:</label>
+                  <input id="tempAddressLine2" type="text" value="<%= data.addressInfo.temporaryAddress.addressLine2%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>Address Line 3:</label>
+                  <input id="tempAddressLine3" type="text" value="<%= data.addressInfo.temporaryAddress.addressLine3%>">
+               </div>
+
+
+               <div class="addressInfoBlock">
+                  <label>City:</label>
+                  <input id="tempAddressCity" type="text" value="<%= data.addressInfo.temporaryAddress.city%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <div class="dummyAddressDiv"></div>
+               </div>
+
+               <div class="addressInfoSelectBlock">
+                  <label>State:</label>
+                  <select  id="tempAddressState">
+                     <option value="maharashtra">Maharashtra</option>
+                     <option value="kernatak">Karnatak</option>
+                  </select>
+               </div>
+
+               <div class="addressInfoSelectBlock">
+                  <label>Country:</label>
+                  <select id="tempAddressCountry">
+                     <option value="india">India</option>
+                     <option value="nepal">Nepal</option>
+                  </select>
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>ZIP/Postal Code:</label>
+                  <input id="tempAddressPostalCode" type="text" value="<%= data.addressInfo.temporaryAddress.postalCode%>">
+               </div>
+            </div>
+            <hr>
+            <div class="permenentAddressContainer">
+               <div class="profileInfoBlockHeader">
+                  <div class="heading">Permenent Address</div>
+               </div>
+               <div class="addressInfoBlock">
+                  <label>Address Line 1:</label>
+                  <input id="permenentAddressLine1" type="text" value="<%= data.addressInfo.permenentAddress.addressLine1%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>Address Line 2:</label>
+                  <input id="permenentAddressLine2" type="text" value="<%= data.addressInfo.permenentAddress.addressLine2%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>Address Line 3:</label>
+                  <input id="permenentAddressLine3" type="text" value="<%= data.addressInfo.permenentAddress.addressLine3%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>City:</label>
+                  <input id="permenentAddressCity" type="text"  value="<%= data.addressInfo.permenentAddress.city%>">
+               </div>
+
+               <div class="addressInfoBlock">
+                  <div class="dummyAddressDiv"></div>
+               </div>
+
+               <div class="addressInfoSelectBlock">
+                  <label>State:</label>
+                  <select  id="permenentAddressState">
+                     <option value="maharashtra">Maharashtra</option>
+                     <option value="kernatak">Karnatak</option>
+                  </select>
+               </div>
+
+               <div class="addressInfoSelectBlock">
+                  <label>Country:</label>
+                  <select id="permenentAddressCountry">
+                     <option value="india">India</option>
+                     <option value="nepal">Nepal</option>
+                  </select>
+               </div>
+
+               <div class="addressInfoBlock">
+                  <label>ZIP/Postal Code:</label>
+                  <input id="permenentAddressPostalCode" type="text" value="<%= data.addressInfo.permenentAddress.postalCode%>">
+               </div>
+            </div>
+      </div>
+      <div class="InformationBlock">
+            <div class="InformationBlockTitle">Contacts Information</div>
+            <div class="contactsInfoDummyBlock">
+            </div>
+
+            <div class="contactsInfoBlock">
+               <label>Primary Email:</label>
+               <input id="primaryEmail" type="text" value="<%= data.contactInfo.primaryEmail%>">
+            </div>
+
+            <div class="contactsInfoBlock">
+               <label>Alternate Email:</label>
+               <input id="alternateEmail" type="text" value="<%= data.contactInfo.alternateEmail%>">
+            </div>
+
+            <div class="contactsInfoBlock">
+               <label>Mobile Number:</label>
+               <input id="mobileNumber" type="text"  value="<%= data.contactInfo.mobileNumber%>">
+            </div>
+
+            <div class="contactsInfoBlock">
+               <label>Work Number:</label>
+               <input id="workNumber" type="text" value="<%= data.contactInfo.workNumber%>">
+            </div>
+
+            <div class="contactsInfoBlock">
+               <label>Home Number:</label>
+               <input id="homeNumber" type="text" value="<%= data.contactInfo.homeNumber%>">
+            </div>
+
+            <div class="contactsInfoBlockPreference">
+               <label>Preferred Contact Number:</label>
+               <div class="contactsInfoBlock">
+                  <input type="checkbox" name="contactPref" value="mobile">&nbsp;Mobile
+               </div>
+
+               <div class="contactsInfoBlock">
+                  <input type="checkbox" name="contactPref" value="work">&nbsp;Work
+               </div>
+
+               <div class="contactsInfoBlock">
+                  <input type="checkbox" name="contactPref" value="home">&nbsp;Home
+               </div>
+            </div>
+      </div>
+      <div class="InformationBlock last userIdContainer">
+            <div class="InformationBlockTitle">Government Issued ID</div>
+            <div type="button" class="btn btn-primary AddMoreIdBtn">Add More +</div>
+            <div class="passportInfoContainer">
+               <div class="profileInfoBlockHeader">
+                  <div class="heading">Passport</div>
+               </div>
+               <div class="govIdInfoBlock">
+                     <label>Passport # :</label>
+                     <input id="passportNumber" type="text" value="<%= data.passportInfo.idNumber%>">               
+               </div>
+               <div class="govIdInfoBlock date">
+                  <% 
+                     var tempDate = new Date(data.passportInfo.issueDate);
+                     var issueDate = tempDate.toISOString().substring(0, 10);
+                     var tempDate = new Date(data.passportInfo.expiryDate);
+                     var expiryDate = tempDate.toISOString().substring(0, 10);
+                  %>
+                  <label> Date of Issue:</label>
+                  <input type="date" value="<%= issueDate%>" id="passportDateOfIssue">                  
+               </div>
+               <div class="govIdInfoBlock date">
+                  <label> Expiry Date:</label>
+                  <input type="date" value="<%= expiryDate%>" id="passportExpiryDate">                  
+               </div>
+               <div class="govIdInfoBlock">
+                     <label>City of Issue:</label>
+                     <input id="passportIssueCity" type="text" value="<%= data.passportInfo.issueCity%>">
+               </div>
+               <div class="govIdInfoBlock select">
+                  <label>Country of Issue:</label>
+                  <select id="passportIssueCountry">
+                     <option value="india">India</option>
+                     <option value="nepal">Nepal</option>
+                  </select>                  
+               </div>
+            </div>
+            <hr>
+            <div class="drivingLicenseInfoContainer">
+               <div class="profileInfoBlockHeader">
+                  <div class="heading">Drivers License</div>
+               </div>
+               <div class="govIdInfoBlock">
+                     <label>DL # :</label>
+                     <input id="drivingLicenseNumber" type="text" value="<%= data.drivingLicenseInfo.idNumber%>">               
+               </div>
+               <% 
+                  var tempDate = new Date(data.passportInfo.issueDate);
+                  var issueDate = tempDate.toISOString().substring(0, 10);
+                  var tempDate = new Date(data.passportInfo.expiryDate);
+                  var expiryDate = tempDate.toISOString().substring(0, 10);
+               %>
+               <div class="govIdInfoBlock date">
+                  <label> Date of Issue:</label>
+                  <input type="date" value="<%= issueDate%>" id="dlDateOfIssue">                  
+               </div>
+               <div class="govIdInfoBlock date">
+                  <label> Expiry Date:</label>
+                  <input type="date" value="<%= expiryDate%>" id="dlExpiryDate">                  
+               </div>
+               <div class="govIdInfoBlock">
+                     <label>City of Issue:</label>
+                     <input id="dlIssueCity" type="text" value="<%= data.drivingLicenseInfo.issueCity%>">               
+               </div>
+               <div class="govIdInfoBlock select">
+                  <label>Country of Issue:</label>
+                  <select id="drivingLicenseIssueCountry">
+                     <option value="india">India</option>
+                     <option value="nepal">Nepal</option>
+                  </select>                  
+               </div>
+            </div>
+      </div>
+      <div class="ProfileBottomBlock">
+            <div class="ProfileBottomBlockCheck">
+               <input type="checkbox" value="myName" id="readTermsCondition">
+               <label>I have read and agree with the terms & conditions.</label>
+            </div>
+            <div class="ProfileBottomBlockCheck">
+               <div type="button" class="btn btn-primary SaveProfileBtn">Save</div>
+            </div>
+      </div>
+   </div>
+</div>
+</section>

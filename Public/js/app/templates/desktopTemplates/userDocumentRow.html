@@ -1,0 +1,13 @@
+<%if(data.Documents.length == 0){%>
+<li class="docListRow">
+	<div class="emptyDocListText">No Documents Uploaded.</div>
+</li>
+<%}else{ _.each(data.Documents,function(Document){%>
+<li class="docListRow">
+	<div class="selectBox"><input type="checkbox" class="selectDoc"></div>
+	<div class="docName"><%= Document.documentName %></div>
+	<div class="docIssueAuthority"><%= Document.issueAuthority %></div>
+	<div class="docIssueYear"><%= Document.issueYear %></div>
+	<div class="docUploaded" name="<%= Document.documentPath %>"><%= Document.documentPath %></div>
+</li>
+<%});}%>
