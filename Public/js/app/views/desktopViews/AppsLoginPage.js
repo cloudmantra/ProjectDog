@@ -22,7 +22,7 @@ define([
       password = $("#password").val();
       this.login.save({ 'username': username, 'password': password },
             { success: function(data) {
-              that.$el.html(new AppsMainPageView().render());
+              that.$el.html(new AppsMainPageView().render({firstName: data.attributes.firstName, lastName: data.attributes.lastName}));
               $(".header").addClass("float-header");
               window.scroll(0, 0);
             }

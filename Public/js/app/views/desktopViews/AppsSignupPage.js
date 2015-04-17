@@ -18,6 +18,8 @@ define([
     fnSaveApplicant:function(e){ 
       if($("#password").val() == $("#confirmPassword").val()){
         var data = {};
+        data.firstname = $("#signupFirstName").val();
+        data.lastname = $("#signupLastName").val();
         data.username = $("#email").val();
         data.password = $("#password").val(); 
         data.mobileNumber = $("#mobileNumber").val();

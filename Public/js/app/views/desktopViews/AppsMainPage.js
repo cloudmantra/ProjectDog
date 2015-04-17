@@ -9,17 +9,22 @@ define([
   'text!templates/desktopTemplates/appsMainPageView.html'
 ], function($, _, Backbone, Logout, UserProfileView, UserDocumentsView, UserVouchView, appMainPageTemplate){
   var AppsMainPageView = Backbone.View.extend({
-    el:".wrapper",
+    el:"body",
     initialize: function (){},
     logout: new Logout(),
-    render: function(){
+    render: function(basicInfo){
+      if(basicInfo === undefined || basicInfo === null){}else{
+        localStorage.setItem("firstname",basicInfo.firstName);
+        localStorage.setItem("lastname",basicInfo.lastName);
+      }
+      this.fullName = localStorage.getItem("firstname") +" "+ localStorage.getItem("lastname");
       var that = this;
       $.ajax({
          type: "GET",
          url:  'api/userTaskList',
          dataType: 'json',
          success: function(doc) {
-            that.$el.html(_.template( appMainPageTemplate, {data:doc})); 
+            that.$el.html(_.template( appMainPageTemplate, {data:doc,fullName: that.fullName})); 
             $(".header").addClass("float-header");
             window.scroll(0, 0);
          },

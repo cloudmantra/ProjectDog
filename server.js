@@ -6,8 +6,8 @@ var session = require('express-session');
 var app = express();
 
 app.use(session({ resave: true,
-                  saveUninitialized: true,
-                  secret: 'uwotm8' }));
+            saveUninitialized: true,
+            secret: 'ovuchodg' }));
 
 app.use(busboy());
 app.use(bodyParser.json());

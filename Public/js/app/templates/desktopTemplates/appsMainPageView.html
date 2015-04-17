@@ -11,7 +11,7 @@
             </div>
             <div class="span4">
                <div class="pull-right">
-                 <span class="logoutLink"> Logout </span>
+                 Hi,<span class="signInName"><%= fullName %></span> | <span class="logoutLink"> Logout </span>
                </div>
             </div>
          </div>
@@ -30,10 +30,6 @@
                         </a>
                      </div><!-- /.logo -->
                   </div><!-- /.span2 -->
-
-                  <h4 class="span2 basicInfoContainer">
-                     Welcome, &nbsp;<span id="userName"><%= data.username%></span>
-                  </h4>
 
                   <div class="span10 taskListContainer">
                      <div class="btn-menu"></div><!-- //mobile menu button -->
@@ -60,33 +56,6 @@
    </div>
    </section>
    </div>
-
-   <!-- Socials -->
-   <section class="section social-section parallax-bg3 parallax" style="padding: 50px 0; border-bottom: 1px solid 0fd8da">
-      <div class="overlay"></div>
-      <div class="container">
-         <div class="row">
-            <div class="content-section">
-               <div class="span12">
-                  <div class="socials-list">
-                     <div class="follow-us">
-                        <h3>Follow Us</h3>
-                     </div>
-                     <ul class="unstyled">
-                     <li><a><i class="icons-facebook"></i></a></li>
-                        <li><a><i class="icons-twitter"></i></a></li>
-                        <li><a><i class="icons-google-plus"></i></a></li>
-                        <li><a><i class="icons-linkedin"></i></a></li>
-                        <li><a><i class="icons-youtube"></i></a></li>
-                        <li><a><i class="icons-pinterest"></i></a></li>
-                        <li><a><i class="icons-instagram"></i></a></li>
-                     </ul>
-                  </div><!-- /.socials-list -->
-               </div><!-- /.span12 -->
-            </div>
-         </div><!-- /.row -->
-      </div><!-- /.container -->
-   </section>
 
    <!-- Footer -->
    <footer class="footer">
@@ -142,7 +111,7 @@
                <div class="widget widget-newsletter">
                   <h5 class="widget-title">Newsletter</h5>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non turpis auctor, rutrum lacus ultrices, venenatis odio.</p>
-                  <form method="post" action="" id="subscribe-form" data-mailchimp="true">
+                  <form method="post" action="#" id="subscribe-form" data-mailchimp="true">
                      <div id="subscribe-content">
                         <div class="input">
                            <input type="text" id="subscribe-email" name="subscribe-email" placeholder="Your address e-mail">
@@ -153,6 +122,23 @@
                      </div>
                      <div id="subscribe-msg"></div>
                   </form>
+                  
+                  <div class="social-icons">
+                  <a href="#1">
+                  <img src="images/social_icons/facebook.png" height="36px" width="36px"></a>
+                  <a href="#2">
+                  <img src="images/social_icons/twitter.png" height="30px" width="30px"></a>
+                  <a href="#3">
+                  <img src="images/social_icons/linkedin.png" height="30px" width="30px"></a>
+                  <a href="#4">
+                  <img src="images/social_icons/google_plus.png" height="30px" width="30px"></a>
+                  <a href="#5">
+                  <img src="images/social_icons/youtube.png" height="30px" width="30px"></a>
+                  <a href="#6">
+                  <img src="images/social_icons/pinterest.png" height="30px" width="30px"></a>
+                  <a href="#7 ">
+                  <img src="images/social_icons/instagram.png" height="30px" width="30 px"></a> 
+                  </div>
                </div><!-- /.widget-newsletter -->
             </div><!-- /.span3 -->
          </div><!-- /.row -->

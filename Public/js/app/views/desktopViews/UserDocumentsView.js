@@ -19,12 +19,23 @@ define([
       }});
     },
     events:{
-      'click .AddNewDocument' : 'fnShowUploadForm',
-      'click .EditDocument'   : 'fnShowEditForm',
-      'click .DeleteDocument' : 'fnDeleteDocument',
-      'click #closeDocForm'   : 'fnCloseDocForm',
-      'click .UploadDocument' : 'fnUploadDocument',
-      'click .docUploaded'    : 'fnDownloadFile'
+      'click .AddNewDocument'       : 'fnShowUploadForm',
+      'click .EditDocument'         : 'fnShowEditForm',
+      'click .DeleteDocument'       : 'fnDeleteDocument',
+      'click #closeDocForm'         : 'fnCloseDocForm',
+      'click .UploadDocument'       : 'fnUploadDocument',
+      'click .docUploaded'          : 'fnDownloadFile',
+      'click .selectAll'            : 'fnSelectAllDoc',
+      'click .deleteDocumentConfirm': 'fnDeleteConfirm',
+      'click .deleteDocumentCancel' : 'fnCloseDialog',
+      'click .deleteDocumentSelect' : 'fnCloseDialog'
+    },
+    fnSelectAllDoc:function(e){
+      if($(e.target).prop("checked")){
+        $(".selectDoc").prop("checked",true);
+      }else{
+        $(".selectDoc").prop("checked",false);
+      }
     },
     fnShowUploadForm: function(e){
       if($(".EditDocumentForm").css("display","block")){
@@ -46,7 +57,17 @@ define([
       $(e.target).closest("div.docForm").slideUp();
     },
     fnDeleteDocument: function(e){
-
+      var data = {};
+      data.file = [];
+      $(".selectDoc:checked").each(function(index){
+        data.file.push($(this).parent(".selectBox").siblings(".docUploaded").html());
+      });
+      if(data.file.length === 0){
+        $(".popupContainer,.selectionDeleteDialog").show();
+      }else{
+        $(".deleteCount").html(data.file.length);
+        $(".popupContainer,.confirmDeleteDialog").show();
+      }
     },
     fnUploadDocument:function(e){
       var that = this;
@@ -67,6 +88,32 @@ define([
             that.render();
          }
       });
+    },
+    fnDeleteConfirm:function(e){
+      var data = {};
+      data.files = [];
+      var that = this;
+      $(".selectDoc:checked").each(function(index){
+        data.files.push($(this).parent(".selectBox").siblings(".docUploaded").html());
+      });
+      $(".deleteCount").html("");
+      $(".popupContainer,.confirmDeleteDialog").hide();
+      $.ajax({
+         type: "GET",
+         url:  "api/deleteDocument",
+         data: data,
+         success: function(doc) {
+            that.render();
+         }
+      });
+    },
+    fnCloseDialog:function(e){
+      if($(e.target).hasClass("deleteDocumentCancel")){
+        $(".deleteCount").html("");
+        $(".popupContainer,.confirmDeleteDialog").hide();
+      }else{
+        $(".popupContainer,.selectionDeleteDialog").hide();
+      }
     },
     fnDownloadFile: function(e){
       var data = {};

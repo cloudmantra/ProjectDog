@@ -54,7 +54,10 @@ router.route('/registerApplicant')
 				res.end("error");
 			}else{*/
 				var Applicant = new ApplicantList();
-		        Applicant.username = req.body.username;Applicant.password = req.body.password;
+		        Applicant.username = req.body.username;
+		        Applicant.password = req.body.password;
+		        Applicant.firstname = req.body.firstname;
+		        Applicant.lastname = req.body.lastname;
 		        Applicant.mobileNumber = parseInt(req.body.mobileNumber);
 		        Applicant.verifyCode = parseInt(tempCode);
 				ApplicantList.findOne({username:req.body.username},function(err, data){
@@ -128,19 +131,23 @@ router.route('/verifyApplicant')
 				verCode = data.verifyCode;
 				user = data.username;
 				pass = data.password;
+				firstName = data.firstname;
+				lastName = data.lastname;
 				if(verCode == parseInt(req.body.verifyCode)){
 					LoginList.findOne({username:data.username},function(err, data){
 						if(data == null|| data == undefined){
-								var doc = new LoginList();
-								doc.username = user;
-								doc.password = pass;
-								doc.type = "person";
-								doc.save(function(err){
-									if (!err) {
-										res.json({ success:1 });
-									    res.end();
-									};
-								});
+							var doc = new LoginList();
+							doc.username = user;
+							doc.password = pass;
+							doc.firstname = firstName;
+							doc.lastname = lastName;
+							doc.type = "person";
+							doc.save(function(err){
+								if (!err) {
+									res.json({ success:1 });
+								    res.end();
+								};
+							});
 						}
 					});
 				}
@@ -181,7 +188,9 @@ router.route('/login')
 			}else{
 				req.session.user = req.body.username;
           		res.send(200, {
-              		auth : true
+              		auth : true,
+              		firstName: data.firstname,
+              		lastName: data.lastname
           		});
           		res.end();
 			}
@@ -190,13 +199,9 @@ router.route('/login')
 
 router.route('/logout')
  	.get(function(req,res){
- 		req.session.user = "";
-  		res.send(200, {
-      		auth : false
-  		});
+ 		req.session.destroy(function(err) {});
   		res.end();
-
-})
+	})
 
 router.route('/userTaskList')
  	.get(function(req,res){
@@ -313,6 +318,27 @@ router.route('/downloadDocument')
 		var file = req.query.file;
 		var filePath = __dirname + '/'+user+'/' + file;
 		res.download(filePath);
+	})
+
+router.route('/deleteDocument')
+	.get(function(req,res){
+		var user = req.session.user;
+		var files = req.query.files;
+		var UserDoc = new UserDocList();
+		var filePath = "";
+		files.forEach(function(filename) {console.log(user+ "   " +filename);
+			UserDocList.findOne({username:user,documentPath:filename},function(err, data){
+				if(data == null|| data == undefined){
+					console.log(data);
+					data.remove();
+					filePath = __dirname + '/'+user+'/' + filename;
+					fs.unlink(filePath,function(doc){ 
+						res.json({success:true});
+						res.end();
+					});
+				}
+			});
+		});
 	})
 
 module.exports = router;
