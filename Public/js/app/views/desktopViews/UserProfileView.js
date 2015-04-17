@@ -14,12 +14,12 @@ define([
       var profile = new UserProfile();
       profile.fetch({success:function(data){
           console.log(data);
-          if(data.attributes.data != null){
+          if(data.attributes.data !== null){
             that.$el.html(_.template( userProfileTemplate, {data:data.attributes.data}));
           }else{
             that.$el.html(_.template( userProfileTemplate, { data:data.attributes }));
           }
-          if(data.attributes.data != null){
+          if(data.attributes.data !== null){
                 that.fillUpData(data.attributes.data);
           }
 
@@ -70,41 +70,41 @@ define([
     },
     fnUpdateProfile:function(e){
       if($("#readTermsCondition").is(':checked')){
-          var tempPreferenceArray = new Array();
+          var tempPreferenceArray = [];
           
           $.each($("input[name='contactPref']:checked"), function(){ 
               tempPreferenceArray.push($(this).val());
           });
 
           var dateofBirth, passportIssueDate ,passportExpiryDate, dlIssueDate, dlExpiryDate;
-          if($("#dateofBirth").val() == "" || $("#dateofBirth").val() == null || $("#dateofBirth").val() == undefined){
+          if($("#dateofBirth").val() === "" || $("#dateofBirth").val() === null || $("#dateofBirth").val() === undefined){
               dateofBirth = new Date(2001,0,1).toISOString();
           }else{
-              dateofBirth = new Date($("#dateofBirth").val()).toISOString()
+              dateofBirth = new Date($("#dateofBirth").val()).toISOString();
           }
 
-          if($("#passportDateOfIssue").val() == "" || $("#passportDateOfIssue").val() == null || $("#passportDateOfIssue").val() == undefined){
+          if($("#passportDateOfIssue").val() === "" || $("#passportDateOfIssue").val() === null || $("#passportDateOfIssue").val() === undefined){
               passportIssueDate = new Date(2001,0,1).toISOString();
           }else{
-              passportIssueDate = new Date($("#passportDateOfIssue").val()).toISOString()
+              passportIssueDate = new Date($("#passportDateOfIssue").val()).toISOString();
           }
 
-          if($("#passportExpiryDate").val() == "" || $("#passportExpiryDate").val() == null || $("#passportExpiryDate").val() == undefined){
+          if($("#passportExpiryDate").val() === "" || $("#passportExpiryDate").val() === null || $("#passportExpiryDate").val() === undefined){
               passportExpiryDate = new Date(2001,0,1).toISOString();
           }else{
-              passportExpiryDate = new Date($("#passportExpiryDate").val()).toISOString()
+              passportExpiryDate = new Date($("#passportExpiryDate").val()).toISOString();
           }
 
-          if($("#dlDateOfIssue").val() == "" || $("#dlDateOfIssue").val() == null || $("#dlDateOfIssue").val() == undefined){
+          if($("#dlDateOfIssue").val() === "" || $("#dlDateOfIssue").val() === null || $("#dlDateOfIssue").val() === undefined){
               dlIssueDate = new Date(2001,0,1).toISOString();
           }else{
-              dlIssueDate = new Date($("#dlDateOfIssue").val()).toISOString()
+              dlIssueDate = new Date($("#dlDateOfIssue").val()).toISOString();
           }
 
-          if($("#dlExpiryDate").val() == "" || $("#dlExpiryDate").val() == null || $("#dlExpiryDate").val() == undefined){
+          if($("#dlExpiryDate").val() === "" || $("#dlExpiryDate").val() === null || $("#dlExpiryDate").val() === undefined){
               dlExpiryDate = new Date(2001,0,1).toISOString();
           }else{
-              dlExpiryDate = new Date($("#dlExpiryDate").val()).toISOString()
+              dlExpiryDate = new Date($("#dlExpiryDate").val()).toISOString();
           }
           
           var obj = {
@@ -148,20 +148,20 @@ define([
              "contactInfo":{
                 "primaryEmail":$("#primaryEmail").val(),
                 "alternateEmail":$("#alternateEmail").val(),
-                "mobileNumber":parseInt($("#mobileNumber").val()),
-                "workNumber":parseInt($("#workNumber").val()),
-                "homeNumber":parseInt($("#homeNumber").val()),
+                "mobileNumber": parseInt($("#mobileNumber").val(),10),
+                "workNumber": parseInt($("#workNumber").val(),10),
+                "homeNumber": parseInt($("#homeNumber").val(),10),
                 "preferredNumber":tempPreferenceArray
              },
              "passportInfo":{
-                "idNumber":parseInt($("#passportNumber").val()),
+                "idNumber": parseInt($("#passportNumber").val(),10),
                 "issueDate":passportIssueDate,
                 "expiryDate":passportExpiryDate,
                 "issueCountry":$("select#passportIssueCountry option:selected").val(),
                 "issueCity":$("#passportIssueCity").val()
              },
              "drivingLicenseInfo":{
-                "idNumber":parseInt($("#drivingLicenseNumber").val()),
+                "idNumber": parseInt($("#drivingLicenseNumber").val(),10),
                 "issueDate": dlIssueDate,
                 "expiryDate": dlExpiryDate,
                 "issueCountry":$("select#drivingLicenseIssueCountry option:selected").val(),
@@ -177,14 +177,14 @@ define([
                    "issueCity":"Udgir"
                 }
              ]
-          }
+          };
           $.ajax({
              type: "PUT",
              url:  'api/userProfile',
              dataType: 'json',
              data: obj,
              success: function(res) {
-                alert("Profile updated successfully.")
+                alert("Profile updated successfully.");
              }
           });
       }

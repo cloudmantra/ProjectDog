@@ -11,12 +11,12 @@ require.config({
       "gmap": "../libs/plugins/backbone.googlemaps"
   },
   shim: {
-    "backbone": {
-      "deps": ["underscore", "jquery"],
-      "exports": "Backbone"
-    },
-    "jasminejquery": ["jquery"],
-    "jqueryFile": ["jquery"]
+      "backbone": {
+        "deps": ["underscore", "jquery"],
+        "exports": "Backbone"
+      },
+      "jasminejquery": ["jquery"],
+      "jqueryFile": ["jquery"],
   }
 
 });

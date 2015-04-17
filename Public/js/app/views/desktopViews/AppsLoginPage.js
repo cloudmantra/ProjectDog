@@ -20,14 +20,13 @@ define([
       var that = this;
       username = $("#email").val();
       password = $("#password").val();
-
-      this.login.save({'username': username,'password': password}
-                     ,{ success: function(data) {
-                            that.$el.html(new AppsMainPageView().render());
-                            $(".header").addClass("float-header");
-                            window.scroll(0, 0);
-                          }
-                      });
+      this.login.save({ 'username': username, 'password': password },
+            { success: function(data) {
+              that.$el.html(new AppsMainPageView().render());
+              $(".header").addClass("float-header");
+              window.scroll(0, 0);
+            }
+          });
     }
   });
   return AppsLoginView;

@@ -17,6 +17,9 @@ var ProfileSchema = mongoose.Schema({
 		motherFirstName: 	{ type: String },
 		motherMiddleName: 	{ type: String },
 		motherLastName: 	{ type: String },
+		spouseFirstName: 	{ type: String },
+		spouseMiddleName: 	{ type: String },
+		spouseLastName: 	{ type: String },
 	},
 	addressInfo:{
 		temporaryAddress:{

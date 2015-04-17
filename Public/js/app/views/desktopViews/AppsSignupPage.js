@@ -17,7 +17,7 @@ define([
     },
     fnSaveApplicant:function(e){ 
       if($("#password").val() == $("#confirmPassword").val()){
-        var data = new Object();
+        var data = {};
         data.username = $("#email").val();
         data.password = $("#password").val(); 
         data.mobileNumber = $("#mobileNumber").val();
@@ -33,13 +33,13 @@ define([
               }else if(doc.success == 2){
                 alert("User Already Exist");
               }
-           },
+           }
         });
       }
     },
     fnSubmitApplicant:function(e){
       var that = this;
-      var data = new Object();
+      var data = {};
       data.username = $("#email").val();
       data.verifyCode = $("#verifyCodeApplicant").val();
       console.log(data);
@@ -50,7 +50,7 @@ define([
          data: data,
          success: function(doc) {
             that.$el.html(new AppsLoginView().render());
-         },
+         }
       });
     }
   });

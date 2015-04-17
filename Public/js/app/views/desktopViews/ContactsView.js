@@ -28,7 +28,7 @@ define([
                   {
                     title: "Park Tavern",
                     lat: 44.9413272,
-                    lng: -93.3705791,
+                    lng: -93.3705791
                   },
                   {
                     title: "Chatterbox Pub",
@@ -41,12 +41,12 @@ define([
                     lng: -93.2470717
                   }
                 ]);
-          this.$el.html(_.template(contactsPageTemplate, {}));
-           var mapOptions = {
+            this.$el.html(_.template(contactsPageTemplate, {}));
+            var mapOptions = {
                 center: new google.maps.LatLng(44.9796635, -93.2748776),
                 zoom: 12,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
-              }
+              };
               // Instantiate map
           var map = new google.maps.Map($('#map')[0], mapOptions);
           // Render Markers

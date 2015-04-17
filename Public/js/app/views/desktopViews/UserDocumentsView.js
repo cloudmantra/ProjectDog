@@ -2,14 +2,15 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'jqueryFile',
   'collections/UserFiles',
   'text!templates/desktopTemplates/userDocumentsView.html',
   'text!templates/desktopTemplates/userDocumentRow.html'
-], function($, _, Backbone, UserFiles, userDocumentsTemplate, userDocumentRowTemplate){
+], function($, _, Backbone, jqueryFile, UserFiles, userDocumentsTemplate, userDocumentRowTemplate){
   var UserDocumentsView = Backbone.View.extend({
     el:".mainContentContainer",
     initialize: function (){},
-    render: function(){console.log("in doc view");
+    render: function(){
       var that = this;
       var documents = new UserFiles();
       this.$el.html(_.template( userDocumentsTemplate, {}));
@@ -68,45 +69,11 @@ define([
       });
     },
     fnDownloadFile: function(e){
-      var data = new Object();
+      var data = {};
       data.file = $(e.target).html();
-      $.ajax({
-        type: "GET",
-        url:  "api/downloadDocument",
-        contentType: "arraybuffer",
-        data: data,
-        success:function(res){
-          var BASE64_MARKER = ';base64,';
- 
-          function convertDataURIToBinary(dataURI) {
-            var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
-            var base64 = dataURI.substring(base64Index);
-            var raw = window.atob(base64);
-            var rawLength = raw.length;
-            var array = new Uint8Array(new ArrayBuffer(rawLength));
-           
-            for(i = 0; i < rawLength; i++) {
-              array[i] = raw.charCodeAt(i);
-            }
-            return array;
-          }
-          var pdf = convertDataURIToBinary(res);
-          PDFJS.getDocument(pdf).then(function getPdfHelloWorld(_pdfDoc) {
-              var w = window.open("blank.html", "blank", "");
-              w.document.write(_pdfDoc);
-          });
-          console.log(res)
-            //doc.save('Test.pdf');
-                      
-            window.open(doc);
-            // var blob = new Blob([res], {type: "application/pdf"});
-            // console.log(blob);
-            // url = URL.createObjectURL(res);
-            var w = window.open("blank.html", "blank", "");
-            w.document.write(b64toBlob(res));
-            // window.open(url,"_blank");
-            // window.open("data:application/pdf;base64" + escape(res)); 
-        }
+      $.fileDownload('http://localhost:8080/api/downloadDocument',{
+        httpMethod: 'GET',
+        data: data
       });
     }
   });

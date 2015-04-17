@@ -5,8 +5,9 @@ define([
   'models/Logout',
   'views/desktopViews/UserProfileView',
   'views/desktopViews/UserDocumentsView',
+  'views/desktopViews/UserVouchView',
   'text!templates/desktopTemplates/appsMainPageView.html'
-], function($, _, Backbone, Logout, UserProfileView, UserDocumentsView, appMainPageTemplate){
+], function($, _, Backbone, Logout, UserProfileView, UserDocumentsView, UserVouchView, appMainPageTemplate){
   var AppsMainPageView = Backbone.View.extend({
     el:".wrapper",
     initialize: function (){},
@@ -49,7 +50,7 @@ define([
       $(".mainContentContainer").html(new UserDocumentsView().render());
     },
     fnShowVouches: function(e){
-      $(".mainContentContainer").html("Vouches View");
+      $(".mainContentContainer").html(new UserVouchView().render());
     },
     fnShowVerifications: function(e){
       $(".mainContentContainer").html("Verifications View");

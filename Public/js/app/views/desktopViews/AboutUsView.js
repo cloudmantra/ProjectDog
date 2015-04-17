@@ -14,7 +14,7 @@ define([
       this.$el.html(_.template(aboutPageTemplate, {}));
     },
     events:{
-      'scroll .row':'detect_scroll',
+      'scroll .row':'detect_scroll'
     },
     detect_scroll:function(e){
       if(window.pageYOffset > 550){

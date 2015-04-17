@@ -2,7 +2,7 @@ define([
 	'underscore',
 	'backbone',
 	'models/UserFile', 
-    	'restApiServer'
+    'restApiServer'
 ],function(_,Backbone,UserFileModel,restApiServer){
 	var UserFiles =Backbone.Collection.extend({
 		model: UserFileModel,
